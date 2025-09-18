@@ -1,0 +1,5 @@
+   gcc -Wall -Wextra -std=c99 -g -c list.c -o list.o
+   gcc -Wall -Wextra -std=c99 -g -c debug_main.c -o debug_main.o
+   gcc -Wall -Wextra -std=c99 -g -o debug_test list.o debug_main.o
+   ./debug_test
+
