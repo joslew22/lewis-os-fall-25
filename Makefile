@@ -1,18 +1,41 @@
-# Makefile for main3.c
+# Makefile for signal handling programs
 CC = gcc
-CFLAGS = -Wall -g
-TARGET = my3proc
-SOURCE = main3.c
+CFLAGS = -Wall
 
-all: $(TARGET)
+# Build all signal programs
+all: signals signal1 signal2 timer
 
-$(TARGET): $(SOURCE)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCE)
+# Original signal program
+signals: signal.c
+	$(CC) $(CFLAGS) -o signals signal.c
 
+# Problem 1: signal1
+signal1: signal1.c
+	$(CC) $(CFLAGS) -o signal1 signal1.c
+
+# Problem 2: signal2
+signal2: signal2.c
+	$(CC) $(CFLAGS) -o signal2 signal2.c
+
+# Problem 3: timer
+timer: timer.c
+	$(CC) $(CFLAGS) -o timer timer.c
+
+# Clean all executables
 clean:
-	rm -f $(TARGET)
+	rm -f signals signal1 signal2 timer
 
-run: $(TARGET)
-	./$(TARGET)
+# Run each program
+run-signals: signals
+	./signals
 
-.PHONY: all clean run
+run-signal1: signal1
+	./signal1
+
+run-signal2: signal2
+	./signal2
+
+run-timer: timer
+	./timer
+
+.PHONY: all clean run-signals run-signal1 run-signal2 run-timer
